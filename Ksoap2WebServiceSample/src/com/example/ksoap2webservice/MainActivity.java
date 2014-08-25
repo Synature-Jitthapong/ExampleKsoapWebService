@@ -1,4 +1,6 @@
-package com.example.ksoap2webservicesample;
+package com.example.ksoap2webservice;
+
+import com.example.ksoap2webservicesample.R;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -19,7 +21,7 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onStart() {
 		super.onStart();
-		new MyService(this, "123").execute(URL);
+		new ShopDataLoader(this, "123").execute(URL);
 	}
 
 

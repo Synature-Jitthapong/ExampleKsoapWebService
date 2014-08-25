@@ -1,4 +1,4 @@
-package com.example.ksoap2webservicesample;
+package com.example.ksoap2webservice;
 
 import java.io.IOException;
 
@@ -17,19 +17,18 @@ import android.os.AsyncTask;
 
 public abstract class Ksoap2WebService extends AsyncTask<String, String, String> {
 
+	public static final String NAME_SPACE = "http://tempuri.org/";
 	protected SoapObject mSoapRequest;
 	protected int mTimeOut = 30 * 1000;
-	protected String mNameSpace;
 	protected String mWebMethod;
 	protected Context mContext;
 	protected PropertyInfo mProperty;
 
-	public Ksoap2WebService(Context c, String nameSpace, String method, int timeOut) {
+	public Ksoap2WebService(Context c, String method, int timeOut) {
 		mContext = c;
-		mNameSpace = nameSpace;
 		mWebMethod = method;
 		mTimeOut = timeOut;
-		mSoapRequest = new SoapObject(nameSpace, mWebMethod);
+		mSoapRequest = new SoapObject(NAME_SPACE, mWebMethod);
 	}
 
 	@Override
@@ -46,7 +45,7 @@ public abstract class Ksoap2WebService extends AsyncTask<String, String, String>
 					SoapEnvelope.VER11);
 			envelope.dotNet = true;
 			envelope.setOutputSoapObject(mSoapRequest);
-			String soapAction = mNameSpace + mWebMethod;
+			String soapAction = NAME_SPACE + mWebMethod;
 			HttpTransportSE androidHttpTransport = new HttpTransportSE(url,
 					mTimeOut);
 			androidHttpTransport.debug = true;

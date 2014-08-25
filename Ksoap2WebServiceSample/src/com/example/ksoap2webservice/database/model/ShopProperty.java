@@ -1,4 +1,4 @@
-package com.example.ksoap2webservicesample;
+package com.example.ksoap2webservice.database.model;
 
 public class ShopProperty {
 	private int ShopID;
